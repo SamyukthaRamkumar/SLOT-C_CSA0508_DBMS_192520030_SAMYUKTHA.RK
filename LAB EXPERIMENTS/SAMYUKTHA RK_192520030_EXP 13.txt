@@ -1,0 +1,60 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 61
+Server version: 8.0.45 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE College;
+Database changed
+mysql> DROP TABLE STUDENT;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> CREATE TABLE Student (
+    -> Student_ID INT AUTO_INCREMENT PRIMARY KEY,
+    -> Name VARCHAR(50),
+    -> Department VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO Student (Name, Department)
+    -> VALUES ('Samyuktha','Bioinformatics');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Student (Name, Department)
+    -> VALUES ('Priya','Computer Science');INSERT INTO Student (Name, Department)
+Query OK, 1 row affected (0.01 sec)
+
+    -> INSERT INTO Student (Name, Department)
+    -> VALUES ('Ravi','Biotechnology');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO Student (Name, Department)
+VALUES ('Ravi','Biotechnology')' at line 2
+mysql> INSERT INTO Student (Name, Department)
+    -> VALUES ('Ravi','Biotechnology');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM Student;
++------------+-----------+------------------+
+| Student_ID | Name      | Department       |
++------------+-----------+------------------+
+|          1 | Samyuktha | Bioinformatics   |
+|          2 | Priya     | Computer Science |
+|          3 | Ravi      | Biotechnology    |
++------------+-----------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> SHOW TABLE STATUS LIKE 'Student';
++---------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+--------------------+----------+----------------+---------+
+| Name    | Engine | Version | Row_format | Rows | Avg_row_length | Data_length | Max_data_length | Index_length | Data_free | Auto_increment | Create_time         | Update_time         | Check_time | Collation          | Checksum | Create_options | Comment |
++---------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+--------------------+----------+----------------+---------+
+| student | InnoDB |      10 | Dynamic    |    3 |           5461 |       16384 |               0 |            0 |   0 |              4 | 2026-08-04 11:44:10 | 2026-08-04 11:45:20 | NULL       | utf8mb4_0900_ai_ci |     NULL |        |         |
++---------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+--------------------+----------+----------------+---------+
+1 row in set (0.01 sec)
+
+mysql>

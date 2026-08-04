@@ -1,0 +1,66 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 60
+Server version: 8.0.45 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE College;
+Database changed
+mysql> DROP TABLE Student;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> CREATE TABLE Student (
+    -> Student_ID INT,
+    -> Name VARCHAR(50),
+    -> Department VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO Student VALUES (101,'Samyuktha','Bioinformatics');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Student VALUES (102,'Priya','Computer Science');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Student VALUES (103,'Ravi','Bioinformatics');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Student VALUES (104,'Sanjay','Biotechnology');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> CREATE VIEW Bioinfo_Students AS
+    -> SELECT Student_ID, Name
+    -> FROM Student
+    -> WHERE Department='Bioinformatics';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM Bioinfo_Students;
++------------+-----------+
+| Student_ID | Name      |
++------------+-----------+
+|        101 | Samyuktha |
+|        103 | Ravi      |
++------------+-----------+
+2 rows in set (0.01 sec)
+
+mysql> CREATE INDEX idx_name
+    -> ON Student(Name);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SHOW INDEX FROM Student;
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table   | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| student |          1 | idx_name |            1 | Name        | A         |           4 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+1 row in set (0.02 sec)
+
+mysql>
