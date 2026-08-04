@@ -1,0 +1,66 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 57
+Server version: 8.0.45 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE College;
+Database changed
+mysql> CREATE TABLE Student (
+    -> Student_ID INT,
+    -> Name VARCHAR(50),
+    -> Dept_ID INT
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> INSERT INTO Student VALUES (101,'Samyuktha',1);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Student VALUES (102,'Priya',2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Student VALUES (103,'Ravi',1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Student VALUES (104,'Sanjay',3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_college |
++-------------------+
+| department        |
+| student           |
++-------------------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT Student.Student_ID, Student.Name, Department.Dept_Name
+    -> FROM Student, Department
+    -> WHERE Student.Dept_ID = Department.Dept_ID;
++------------+-----------+------------------+
+| Student_ID | Name      | Dept_Name        |
++------------+-----------+------------------+
+|        101 | Samyuktha | Bioinformatics   |
+|        102 | Priya     | Computer Science |
+|        103 | Ravi      | Bioinformatics   |
+|        104 | Sanjay    | Biotechnology    |
++------------+-----------+------------------+
+4 rows in set (0.01 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_college |
++-------------------+
+| department        |
+| student           |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql>
