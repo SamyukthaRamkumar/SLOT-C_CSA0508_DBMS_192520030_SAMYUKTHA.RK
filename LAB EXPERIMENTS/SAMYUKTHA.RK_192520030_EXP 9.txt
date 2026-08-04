@@ -1,0 +1,87 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 50
+Server version: 8.0.45 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE College;
+Database changed
+mysql> DROP TABLE Student;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> CREATE TABLE Student (Student_ID INT, Name VARCHAR(50), Department VARCHAR(50));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO Student VALUES (101,'Samyuktha','Bioinformatics');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Student VALUES (102,'Priya','Computer Science');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Student VALUES (103,'Ravi','Bioinformatics');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Student VALUES (104,'Sanjay','Biotechnology');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Student VALUES (105,'Anu','Computer Science');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT Department, COUNT(*) AS Total_Students
+    -> FROM Student
+    -> GROUP BY Department;
++------------------+----------------+
+| Department       | Total_Students |
++------------------+----------------+
+| Bioinformatics   |              2 |
+| Computer Science |              2 |
+| Biotechnology    |              1 |
++------------------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> SELECT Department, COUNT(*) AS Total_Students
+    -> FROM Student
+    -> GROUP BY Department
+    -> HAVING COUNT(*) > 1;
++------------------+----------------+
+| Department       | Total_Students |
++------------------+----------------+
+| Bioinformatics   |              2 |
+| Computer Science |              2 |
++------------------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Student
+    -> ORDER BY Name ASC;
++------------+-----------+------------------+
+| Student_ID | Name      | Department       |
++------------+-----------+------------------+
+|        105 | Anu       | Computer Science |
+|        102 | Priya     | Computer Science |
+|        103 | Ravi      | Bioinformatics   |
+|        101 | Samyuktha | Bioinformatics   |
+|        104 | Sanjay    | Biotechnology    |
++------------+-----------+------------------+
+5 rows in set (0.01 sec)
+
+mysql> SELECT * FROM Student
+    -> ORDER BY Name DESC;
++------------+-----------+------------------+
+| Student_ID | Name      | Department       |
++------------+-----------+------------------+
+|        104 | Sanjay    | Biotechnology    |
+|        101 | Samyuktha | Bioinformatics   |
+|        103 | Ravi      | Bioinformatics   |
+|        102 | Priya     | Computer Science |
+|        105 | Anu       | Computer Science |
++------------+-----------+------------------+
+5 rows in set (0.00 sec)
+
+mysql>
